@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:expenses/components/chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -124,14 +123,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
     final PreferredSizeWidget appBar = Platform.isIOS
         ? CupertinoNavigationBar(
-            middle: Text('Despesas Pessoais'),
+            middle: const Text('Despesas Pessoais'),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
               children: actions,
             ),
           )
         : AppBar(
-            title: Text('Despesas Pessoais'),
+            title: const Text('Despesas Pessoais'),
             centerTitle: true,
             actions: actions,
           );
@@ -148,12 +147,15 @@ class _MyHomePageState extends State<MyHomePage> {
             if (_showChart || !isLandscape)
               Container(
                 height: availableHeight * (isLandscape ? 0.7 : 0.30),
-                child: Chart(_recentTransactions),
+                child: Chart(recentTransaction: _recentTransactions),
               ),
             if (!_showChart || !isLandscape)
               Container(
                 height: availableHeight * (isLandscape ? 1 : 0.70),
-                child: TransactionList(_transactions, _removeTransaction),
+                child: TransactionList(
+                  transactions: _transactions,
+                  onRemove: _removeTransaction,
+                ),
               ),
           ],
         ),

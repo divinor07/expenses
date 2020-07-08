@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class Chart extends StatelessWidget {
   final List<Transaction> recentTransaction;
 
-  Chart(this.recentTransaction);
+  const Chart({this.recentTransaction});
 
   List<Map<String, Object>> get groupedTransactions {
     return List.generate(7, (index) {
@@ -52,7 +52,7 @@ class Chart extends StatelessWidget {
           children: groupedTransactions.map((tr) {
             return Flexible(
               fit: FlexFit.tight,
-              child: CHartBar(
+              child: ChartBar(
                 label: tr['day'],
                 value: tr['value'],
                 percentage: _weekTotalValue == 0

@@ -6,7 +6,10 @@ class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
   final void Function(String) onRemove;
 
-  TransactionList(this.transactions, this.onRemove);
+  const TransactionList({
+    this.transactions,
+    this.onRemove,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +18,12 @@ class TransactionList extends StatelessWidget {
             builder: (ctx, constraints) {
               return Column(
                 children: <Widget>[
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Text(
                     'Nenhuma Transação Cadastrada',
                     style: Theme.of(context).textTheme.headline6,
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Container(
                     height: constraints.maxHeight * 0.6,
                     child: Image.asset(
@@ -39,7 +42,7 @@ class TransactionList extends StatelessWidget {
 
               return Card(
                 elevation: 5,
-                margin: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+                margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
                 child: ListTile(
                   leading: CircleAvatar(
                     radius: 30,
@@ -62,12 +65,12 @@ class TransactionList extends StatelessWidget {
                   trailing: MediaQuery.of(context).size.width > 480
                       ? FlatButton.icon(
                           onPressed: () => onRemove(tr.id),
-                          icon: Icon(Icons.delete),
-                          label: Text('Excluir'),
+                          icon: const Icon(Icons.delete),
+                          label: const Text('Excluir'),
                           textColor: Theme.of(context).errorColor,
                         )
                       : IconButton(
-                          icon: Icon(Icons.delete),
+                          icon: const Icon(Icons.delete),
                           color: Theme.of(context).errorColor,
                           onPressed: () => onRemove(tr.id),
                         ),
